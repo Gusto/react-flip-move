@@ -15,7 +15,6 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import './polyfills';
 import propConverter from './prop-converter';
@@ -65,7 +64,7 @@ class FlipMove extends Component {
 
 
   componentDidMount() {
-    this.parentElement = ReactDOM.findDOMNode(this);
+    this.parentElement = React.findDOMNode(this);
   }
 
 
@@ -97,7 +96,7 @@ class FlipMove extends Component {
       // Ignore these children, they don't need to be moved.
       if ( !child.key ) return boxes;
 
-      const domNode     = ReactDOM.findDOMNode( this.refs[child.key] );
+      const domNode     = React.findDOMNode( this.refs[child.key] );
 
       const childBox    = this.props.getPosition(domNode);
       const relativeBox = {
@@ -200,7 +199,7 @@ class FlipMove extends Component {
       const leavingChildren = this.state.children.filter( ({leaving}) => leaving );
 
       leavingChildren.forEach( leavingChild => {
-        const domNode = ReactDOM.findDOMNode( this.refs[leavingChild.key] );
+        const domNode = React.findDOMNode( this.refs[leavingChild.key] );
         const leavingBoundingBox = this.boundingBoxes[leavingChild.key];
 
         // We need to take the items out of the "flow" of the document, so that
@@ -283,7 +282,7 @@ class FlipMove extends Component {
         };
       }
     } else {
-      let domNode       = ReactDOM.findDOMNode( this.refs[child.key] );
+      let domNode       = React.findDOMNode( this.refs[child.key] );
       const [ dX, dY ]  = this.getPositionDelta(domNode, child.key);
       style.transform   = `translate(${dX}px, ${dY}px)`;
     }
@@ -323,7 +322,7 @@ class FlipMove extends Component {
 
     // Otherwise, we only want to animate it if the child's position on-screen
     // has changed. Let's figure that out.
-    const domNode     = ReactDOM.findDOMNode( this.refs[child.key] );
+    const domNode     = React.findDOMNode( this.refs[child.key] );
     const [ dX, dY ]  = this.getPositionDelta( domNode, child.key );
 
     return dX !== 0 || dY !== 0;
@@ -334,7 +333,7 @@ class FlipMove extends Component {
     // Add this child to the animations array. This is used for working out
     // when all children have finished animated (so that the onFinishAll
     // callback can be fired, and so we can do some cleanup).
-    const domNode = ReactDOM.findDOMNode( this.refs[child.key] );
+    const domNode = React.findDOMNode( this.refs[child.key] );
 
     this.remainingAnimations++;
     this.childrenToAnimate.elements.push(child);
@@ -343,7 +342,7 @@ class FlipMove extends Component {
 
 
   runAnimation(child, n) {
-    let domNode = ReactDOM.findDOMNode( this.refs[child.key] );
+    let domNode = React.findDOMNode( this.refs[child.key] );
     const styles = this.domStyles[child.key];
 
     // Apply the relevant style for this DOM node
