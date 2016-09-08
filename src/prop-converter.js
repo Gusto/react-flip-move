@@ -39,7 +39,7 @@ function propConverter(ComposedComponent) {
       // This is to ensure we're always working with an array, and not
       // an only child. There's some weirdness with this.
       // See: https://github.com/facebook/react/pull/3650/files
-      workingProps.children = React.Children.toArray(this.props.children);
+      workingProps.children = this.props.children;
 
       // Convert an enterLeave preset to the real thing
       workingProps.enterAnimation = this.convertAnimationProp(
