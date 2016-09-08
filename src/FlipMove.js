@@ -25,7 +25,7 @@ import {
 const transitionEnd = whichTransitionEvent();
 
 
-// @propConverter
+@propConverter
 class FlipMove extends Component {
   constructor(props) {
     super(props);
