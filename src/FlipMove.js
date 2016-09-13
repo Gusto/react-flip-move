@@ -141,7 +141,7 @@ class FlipMove extends Component {
       // we want to treat it as though it's entering
       const isEntering = !child || child.leaving;
 
-      return { ...nextChild, entering: isEntering };
+      return { ...nextChild, entering: isEntering, props: nextChild.props };
     });
 
     // This is tricky. We want to keep the nextChildren's ordering, but with
