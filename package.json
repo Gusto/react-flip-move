@@ -1,5 +1,5 @@
 {
-  "name": "react-flip-move",
+  "name": "@gusto/react-flip-move",
   "version": "2.4.2",
   "description": "Effortless animation between DOM changes (eg. list reordering) using the FLIP technique.",
   "main": "lib/index.js",
